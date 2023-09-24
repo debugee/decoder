@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "name": "macos",
+            "intelliSenseMode": "macos-clang-x64",
+            "compilerPath": "/Library/Developer/CommandLineTools/usr/bin/clang++ -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk",
+            "cStandard": "c11",
+            "cppStandard": "c++11",
+            "includePath": [],
+            "defines": [
+                "BX_STANDALONE_DECODER",
+                "BX_INSTR_STORE_OPCODE_BYTES"
+            ]
+        }
+    ],
+    "version": 4
+}
