@@ -1,6 +1,0 @@
-{
-    "lldb.displayFormat": "hex",
-    "lldb.showDisassembly": "never",
-    "lldb.dereferencePointers": true,
-    "lldb.consoleMode": "evaluate"
-}
