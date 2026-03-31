@@ -14,10 +14,6 @@ add_executable(decoder
     bochs/cpu/decoder/fetchdecode_opmap_xop.cc
 )
 
-target_include_directories(decoder PRIVATE 
-${CMAKE_CURRENT_SOURCE_DIR}/bochs
-${CMAKE_CURRENT_SOURCE_DIR}/bochs/cpu/decoder)
-
 target_compile_definitions(decoder PRIVATE -DBX_STANDALONE_DECODER -DBX_INSTR_STORE_OPCODE_BYTES)
 
 target_compile_options(decoder PRIVATE -Wno-deprecated-declarations -Wno-braced-scalar-init)

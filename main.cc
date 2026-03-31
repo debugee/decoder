@@ -1,7 +1,7 @@
-#include <bochs.h>
-#include <instr.h>
-#include <decoder.h>
-#include <fetchdecode.h>
+#include "bochs/cpu/decoder/bochs.h"
+#include "bochs/cpu/decoder/instr.h"
+#include "bochs/cpu/decoder/decoder.h"
+#include "bochs/cpu/decoder/fetchdecode.h"
 #include <iostream>
 
 extern int fetchDecode32(const Bit8u *fetchPtr, bool is_32, bxInstruction_c *i, unsigned remainingInPage);
@@ -16,7 +16,7 @@ int main()
     bxInstruction_c i = {0};
     bx_address cs_base = 0;
     bx_address ip = 0;
-    if (disbuf == disasm(instr, 0, 0, disbuf, &i, cs_base, ip, BX_DISASM_INTEL))
+    if (disbuf == disasm(instr, 0, 1, disbuf, &i, cs_base, ip, BX_DISASM_INTEL))
     {
         i.set_opcode_bytes(instr);
         std::cout << i.ilen() << std::endl;
