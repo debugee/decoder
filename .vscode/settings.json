@@ -1,0 +1,5 @@
+{
+    "files.associations": {
+         "**/bochs/cpu/decoder/*.def": "cpp"
+    },
+}
