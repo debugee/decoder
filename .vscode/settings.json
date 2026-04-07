@@ -2,4 +2,7 @@
     "files.associations": {
          "**/bochs/cpu/decoder/*.def": "cpp"
     },
+    "cmake.debugConfig": {
+        "externalConsole": true
+    }
 }

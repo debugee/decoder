@@ -1,0 +1,15 @@
+diff --git a/bochs/gui/keymap.cc b/bochs/gui/keymap.cc
+index 3426b6b56..992998f56 100644
+--- a/bochs/gui/keymap.cc
++++ b/bochs/gui/keymap.cc
+@@ -114,6 +114,10 @@ char* basename(char *path)
+   }
+   return ptr;
+ }
++#else
++
++#include <libgen.h>
++
+ #endif
+ 
+ void bx_keymap_c::loadKeymap(const char *prefix, Bit32u stringToSymbol(const char*))
