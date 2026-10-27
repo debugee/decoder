@@ -1,0 +1,42 @@
+如果调试boot.asm,需要安装x86_64-elf-gdb
+取消注释cmakelists.txt中的--enable-gdb-stub,--enable-gdb-stub 和--enable-debugger互斥,与--enable-x86-debugger无关
+取消注释bochsrc.txt.in中的gdbstub
+bochs的gdbstub值支持32或者64,不能自适应,所以不能调试8086代码,寄存器对应不上
+
+如果需要调试32或者64可以选择gdbstub
+编译的时候带入区段基地址的调试信息用elf格式,就不需要设置配置中的text_base了,注意如何要设置这里只支持10进制的数
+这样可以用x86_64-elf-gdb带符号调试
+
+需要安装x86_64-elf-gdb
+
+镜像可以用vmware制作好兼容bochs的格式
+这样镜像制作速度非常快,注意用vmware需要删除一些bochs不支持的设置,不然制作的镜像不能使用
+bochs支持
+flat concat sparse dll growing undoable volatile vmware3
+vbox vvfat vpc vmware4
+
+
+如果是调试mbr等8086代码还是使用bochs自己的调试器,注意开启--enable-debugger,然后启动的时候带上-debugger参数
+
+
+
+bochs的解码器被我剥离并安装到install中了,并有一个cmakelists.txt的例子
+
+
+编译之前还需要安装x86_64-elf-binutils和sdl2
+
+
+操蛋的是gdb不会主动加上cs的base,导致每次单步读取错误的地址进行反汇编
+我写了一个.gdbinit文件可以自动计算cs的base,并在每次停下的时候进行反汇编,这样就可以正确的反汇编了
+
+bochs的gdbstub不支持动态set architecture,64和32之间动态切换
+i386和i8086没有问题,g命令总是返回32位的寄存器信息
+这导致编译bochs的时候支持64的时候,gdb就不能设置i8086或者i386了,不然g命令寄存器信息错位
+所以如果要用gdb调试8086或者386请编译不支持x64的bochs,gdbstub中g命令是写死的宏判断
+
+如果要调试64位,请编译bochs支持x64cpu,这样就完美
+
+set architecture
+❌️ Requires an argument. Valid arguments are i386, i386:x86-64, i386:x64-32, i8086, i386:intel, i386:x86-64:intel, i386:x64-32:intel, auto.
+intel后缀现实intel语法汇编
+auto自动根据文件选择arch

@@ -12,7 +12,7 @@ extern int fetchDecode64(const Bit8u *fetchPtr, bxInstruction_c *i, unsigned rem
 int main()
 {
     char disbuf[100] = {0};
-    Bit8u instr[] = {0x67,0x48,0x8d, 0x00};
+    Bit8u instr[] = {0x67, 0x48, 0x8d, 0x00};
     bxInstruction_c i = {0};
     bx_address cs_base = 0;
     bx_address ip = 0;

@@ -1,13 +1,16 @@
 {
     "configurations": [
-    {
-        "type": "lldb",
-        "request": "launch",
-        "name": "Launch",
-        "program": "${workspaceFolder}/install/bin/bochs",
-        "args": [],
-        "cwd": "${workspaceFolder}",
-        "console":"integratedTerminal"
-    }
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "debug bochs itself",
+            "program": "${workspaceFolder}/install/bin/bochs",
+            "args": [
+                "-f",
+                "${workspaceFolder}/install/bochsrc.txt"
+            ],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        }
     ]
 }

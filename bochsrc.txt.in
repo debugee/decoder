@@ -1,0 +1,22 @@
+# minimal bochs config to boot floppy.img
+megs: 32
+
+cpu: count=1, ips=10000000
+
+# use floppy image created above
+floppya: 1_44=@FILE_FLOPPY_IMG@, status=inserted
+
+# boot from floppy
+boot: floppy
+
+sound: driver=dummy
+sb16: enabled=0
+
+#log: -
+# debug: action=ignore, pci=report
+#  info: action=report
+#  error: action=report
+#  panic: action=ask
+
+#--enable-gdb-stub and boot.elf dwarf
+gdbstub: enabled=1, port=1234, text_base=0, data_base=0, bss_base=0
