@@ -7,7 +7,8 @@
             "program": "${workspaceFolder}/install/bin/bochs",
             "args": [
                 "-f",
-                "${workspaceFolder}/install/bochsrc.txt"
+                "${workspaceFolder}/install/bochsrc.txt",
+                "-debugger"
             ],
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal"

@@ -53,8 +53,8 @@ ExternalProject_Add(Bochs
     --enable-e1000
     --enable-plugins
     --enable-x86-debugger
-#    --enable-debugger
-    --enable-gdb-stub
+    --enable-debugger
+#    --enable-gdb-stub
     PATCH_COMMAND ${patch_check_and_apply}
     BUILD_COMMAND make
     INSTALL_COMMAND make install
