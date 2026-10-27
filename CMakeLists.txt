@@ -35,12 +35,12 @@ ExternalProject_Add(Bochs
 	--enable-all-optimizations
     --enable-cpu-level=6
     --enable-3dnow
-#    --enable-x86-64
-#    --enable-vmx=2
-#    --enable-svm
-#    --enable-avx
-#    --enable-evex
-#    --enable-cet
+    --enable-x86-64
+    --enable-vmx=2
+    --enable-svm
+    --enable-avx
+    --enable-evex
+    --enable-cet
     --enable-pci
     --enable-clgd54xx
     --enable-voodoo
@@ -75,7 +75,7 @@ install(FILES main.cc DESTINATION .)
 
 add_custom_command(OUTPUT boot.elf.o
     COMMAND nasm
-            -f elf32
+            -f elf64
             -g 
             -F dwarf
             -o ${CMAKE_CURRENT_BINARY_DIR}/boot.elf.o
@@ -84,7 +84,7 @@ add_custom_command(OUTPUT boot.elf.o
 )
 
 add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/boot.elf
-    COMMAND i686-elf-ld
+    COMMAND x86_64-elf-ld
             -T ${CMAKE_CURRENT_SOURCE_DIR}/boot.ld
             -o ${CMAKE_CURRENT_BINARY_DIR}/boot.elf
             ${CMAKE_CURRENT_BINARY_DIR}/boot.elf.o
@@ -92,7 +92,7 @@ add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/boot.elf
 )
 
 add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/boot.bin
-    COMMAND i686-elf-objcopy
+    COMMAND x86_64-elf-objcopy
             -O binary
             ${CMAKE_CURRENT_BINARY_DIR}/boot.elf
             ${CMAKE_CURRENT_BINARY_DIR}/boot.bin
